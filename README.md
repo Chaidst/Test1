@@ -1,4 +1,4 @@
-# Playing Tic-Tac-Toe over the Internet: Socket Programming and Protocol Design
+# Playing Tic-Tac-Toe over the Internet
 
 ## Protocol Overview
 
@@ -46,18 +46,19 @@ All messages are single lines terminated by a newline character (`\n`).
 
 ### Client → Server
 
-
+```
 | Message | Format | Description |
 |---------|--------|-------------|
 
 | JOIN | `JOIN y` | Request to join a room. `y` is an integer from 1 to 5. Sent when the client first connects or after a game ends. |
 | MARK | `MARK x` | Place a mark at the given board position. `x` is an integer from 1 to 9 (see board layout below). Only valid during the client's turn. |
 | QUIT | `QUIT` | Disconnect from the server. The server responds with the client's game statistics before closing the connection. |
-
+```
 
 
 ### Server → Client
 
+```
 | Message | Format | Description |
 |---------|--------|-------------|
 
@@ -75,6 +76,7 @@ All messages are single lines terminated by a newline character (`\n`).
 | OPPONENT_LEFT | `OPPONENT_LEFT` | The opponent disconnected or timed out. This client wins by default. |
 | PLAY_AGAIN | `PLAY_AGAIN` | Sent after a game ends, prompting the client to join another room or quit. |
 | STATS | `STATS <won> <drawn> <lost>` | The client's game statistics for this session. Sent in response to `QUIT`. |
+```
 
 ## Game State Management
 
