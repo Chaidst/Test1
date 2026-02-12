@@ -51,7 +51,7 @@ All messages are single lines terminated by a newline character (`\n`).
 |---------|--------|-------------|
 
 | JOIN | JOIN y | Request to join a room. y is an integer from 1 to 5. Sent when the client first connects or after a game ends. |
-| MARK | MARK x | Place a mark at the given board position. x is an integer from 1 to 9 (see board layout below). Only valid during the client's turn. |
+| MARK | MARK x | Place a mark at the given board position. x is an integer from 1 to 9. Only valid during the client's turn. |
 | QUIT | QUIT | Disconnect from the server. The server responds with the client's game statistics before closing the connection. |
 ```
 
@@ -64,7 +64,7 @@ All messages are single lines terminated by a newline character (`\n`).
 
 | PROMPT_JOIN | PROMPT_JOIN | Sent when a client first connects, prompting them to join a room. |
 | JOINED_WAIT | JOINED_WAIT | Confirms the client joined a room and is waiting for a second player. |
-| JOINED | JOINED | Confirms the client joined a room that already had one player (game will start). |
+| JOINED | JOINED | Confirms the client joined a room that already had one player. |
 | ROOM_FULL | ROOM_FULL | The requested room already has 2 players. The client should try a different room. |
 | STARTED | STARTED <symbol> | The game has started. symbol is X or O, telling the client which mark they play as. X moves first. |
 | YOUR_TURN | YOUR_TURN | It is this client's turn to make a move. The client should respond with a MARK command. |
@@ -109,7 +109,7 @@ When a game ends, both players are removed from the room and the room is reset i
 
 ## Time Diagram
 
-The following diagram is a typical game flow between two clients (C1, C2) and the server (S):
+The following diagram is a typical game flow between two clients C1, C2 and the server S:
 
 ```
   C1                        S                        C2
